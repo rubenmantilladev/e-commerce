@@ -1,0 +1,46 @@
+<header>
+  <section class="header-contact">
+    <div class="contact-container">
+      <div class="contact-container__item contact_label">
+        <p>Contáctanos</p>
+      </div>
+      <div class="contact-container__item">
+        <p>+51 999 999 999</p>
+      </div>
+      <div class="contact-container__item">
+        <p>example@example.com</p>
+      </div>
+    </div>
+    <div class="anchor-container">
+      <div class="anchor-container__item">
+        <a href="#">Blog</a>
+      </div>
+      <div class="anchor-container__item">
+        <a href="#">Acerca de</a>
+      </div>
+    </div>
+  </section>
+  <app-divider></app-divider>
+  <section class="header-main">
+    <div class="logo-container">
+      <img src="assets/images/logo.svg" alt="Logo" />
+    </div>
+    <div class="search-component">
+      <app-search-box></app-search-box>
+    </div>
+    <div class="actions-container">
+      <div class="user-container">
+        <button (click)="openMenu1()" class="btn-action-header user-icon">
+          <img src="assets/images/user-icon.svg" alt="User icon" />
+        </button>
+        <app-menu [showMenu]="showMenu1" [itemsMenu]="userMenu"></app-menu>
+      </div>
+      <div class="cart-container">
+        <button (click)="openMenu2()" class="btn-action-header cart-icon">
+          <img src="assets/images/cart-icon.svg" alt="Cart icon" />
+        </button>
+        <app-menu [showMenu]="showMenu2" [itemsMenu]="cartMenu"></app-menu>
+      </div>
+    </div>
+  </section>
+</header>

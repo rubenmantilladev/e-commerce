@@ -1,0 +1,13 @@
+<div class="input-container">
+  <select name="category" id="category">
+    <option value="all">Todas las categorías</option>
+    <option value="tag 2">Categoría 1</option>
+    <option value="tag 1">Categoría 2</option>
+  </select>
+  <input
+    type="search"
+    placeholder="Buscar Productos, Categorías..."
+    (keyup.enter)="searchTag()"
+    #txtTagInput
+  />
+</div>
