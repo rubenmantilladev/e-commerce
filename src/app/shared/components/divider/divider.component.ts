@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-divider',
+  selector: 'shared-divider',
   template: '<section class="container-section divider"></section>',
   styles: [
     `

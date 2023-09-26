@@ -1,0 +1,44 @@
+.btn {
+  display: flex;
+  height: 36px;
+  padding: 0.75rem;
+  align-items: center;
+  border-radius: 0.75rem;
+  gap: 6px;
+  border: 2px;
+  border-style: solid;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border-color: var(--c-2-b);
+  background: var(--c-2-a);
+  color: var(--c-1-j);
+
+  &:hover {
+    background: var(--c-2-b);
+  }
+}
+
+.btn-secondary {
+  border-color: var(--c-1-a2);
+  background: var(--c-1-j);
+  color: var(--c-1-a2);
+
+  &:hover {
+    background: var(--c-1-a2);
+    color: var(--c-1-j);
+  }
+  &:active {
+    background: var(--c-1-a);
+    color: var(--c-1-j);
+  }
+  &:disabled {
+    border: none;
+    background: var(--c-1-b);
+    color: var(--c-1-a4);
+    cursor: not-allowed;
+  }
+}

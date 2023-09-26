@@ -16,5 +16,6 @@ import { RouterModule } from '@angular/router';
     SearchBoxComponent,
   ],
   imports: [CommonModule, RouterModule],
+  exports: [HeaderComponent, FooterComponent, MenuComponent, DividerComponent],
 })
 export class SharedModule {}

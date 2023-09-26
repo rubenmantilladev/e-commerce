@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'app-search-box',
+  selector: 'shared-search-box',
   templateUrl: './search-box.component.html',
   styleUrls: ['./search-box.component.scss'],
 })

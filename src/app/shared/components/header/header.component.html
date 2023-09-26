@@ -20,26 +20,26 @@
       </div>
     </div>
   </section>
-  <app-divider></app-divider>
+  <shared-divider></shared-divider>
   <section class="header-main">
     <div class="logo-container">
       <img src="assets/images/logo.svg" alt="Logo" />
     </div>
     <div class="search-component">
-      <app-search-box></app-search-box>
+      <shared-search-box></shared-search-box>
     </div>
     <div class="actions-container">
       <div class="user-container">
-        <button (click)="openMenu1()" class="btn-action-header user-icon">
-          <img src="assets/images/user-icon.svg" alt="User icon" />
+        <button (click)="openMenu1()" class="btn-menu-header user-icon">
+          <img src="assets/images/icons/icon-user.svg" alt="User icon" />
         </button>
-        <app-menu [showMenu]="showMenu1" [itemsMenu]="userMenu"></app-menu>
+        <shared-menu class="shared-menu" [itemsMenu]="userMenu"></shared-menu>
       </div>
       <div class="cart-container">
-        <button (click)="openMenu2()" class="btn-action-header cart-icon">
-          <img src="assets/images/cart-icon.svg" alt="Cart icon" />
+        <button (click)="openMenu2()" class="btn-menu-header cart-icon">
+          <img src="assets/images/icons/icon-cart.svg" alt="Cart icon" />
         </button>
-        <app-menu [showMenu]="showMenu2" [itemsMenu]="cartMenu"></app-menu>
+        <shared-menu class="shared-menu" [itemsMenu]="cartMenu"></shared-menu>
       </div>
     </div>
   </section>

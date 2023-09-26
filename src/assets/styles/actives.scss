@@ -1,0 +1,12 @@
+.router-link-active {
+  background: var(--c-2-a1);
+  color: var(--c-2-b) !important;
+
+  img {
+    filter: invert(1);
+  }
+
+  p {
+    color: var(--c-2-b) !important;
+  }
+}

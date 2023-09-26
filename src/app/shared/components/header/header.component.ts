@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
+  selector: 'shared-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -26,17 +26,17 @@ export class HeaderComponent {
   userMenu = [
     {
       name: 'Iniciar Sesión',
-      link: '/home',
+      link: '/login',
       icon: 'assets/images/icons/icon-login.svg',
     },
     {
       name: 'Registrarme',
-      link: '/product',
+      link: '/register',
       icon: 'assets/images/icons/icon-user.svg',
     },
     {
       name: 'Mi Perfil',
-      link: '/contact',
+      link: '/profile',
       icon: 'assets/images/icons/icon-profile.svg',
     },
   ];
@@ -44,8 +44,8 @@ export class HeaderComponent {
   cartMenu = [
     {
       name: 'Mi carrito',
-      link: '/',
-      icon: 'assets/images/icons/icon-cart.svg',
+      link: '/cart',
+      icon: 'assets/images/icons/icon-in-cart.svg',
     },
   ];
 }

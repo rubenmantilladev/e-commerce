@@ -4,7 +4,7 @@ header {
   margin: 0 auto;
   padding: 0rem 45px;
   flex-direction: column;
-  background: var(--c-1-j);
+  background: var(--c-1-g);
 
   .header-contact {
     display: flex;
@@ -57,7 +57,7 @@ header {
 
     .actions-container {
       display: flex;
-      gap: 2.5rem;
+      gap: 1rem;
 
       .cart-container,
       .user-container {
@@ -67,16 +67,27 @@ header {
   }
 }
 
-.btn-action-header {
+.btn-menu-header {
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 50%;
   width: 40px;
   height: 40px;
 
+  + .shared-menu {
+    display: none;
+
+    &:hover {
+      display: block;
+    }
+  }
+
   &:hover {
-    background: var(--c-2-a1);
+    background: var(--c-2-d);
+
+    + .shared-menu {
+      display: block;
+    }
   }
 }

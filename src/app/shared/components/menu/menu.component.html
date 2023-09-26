@@ -1,4 +1,4 @@
-<div *ngIf="showMenu" class="menu">
+<div class="menu">
   <ng-container *ngFor="let item of itemsMenu">
     <div
       [routerLink]="[item?.link]"
@@ -9,6 +9,6 @@
       <img width="20" height="20" [src]="item.icon" alt="" />
       <p>{{ item.name }}</p>
     </div>
-    <app-divider></app-divider>
+    <shared-divider></shared-divider>
   </ng-container>
 </div>

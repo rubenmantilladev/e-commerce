@@ -1,1 +1,29 @@
-<p>footer works!</p>
+<footer class="container-section separation-section">
+  <section class="footer-section footer-actions">
+    <div class="footer-sectiom__item" *ngFor="let item of footerData">
+      <div class="footer-section__title">
+        <h2>{{ item.title }}</h2>
+      </div>
+      <ul class="footer-section__list">
+        <li href="#" *ngFor="let link of item.links">
+          <a> {{ link }} </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="footer-section">
+    <div class="footer-section__title">
+      <h2>Etiquetas populares</h2>
+    </div>
+    <div class="footer-section__tags">
+      <a class="tag" *ngFor="let tag of tagsProducts">
+        <span> {{ tag }} </span>
+      </a>
+    </div>
+  </section>
+  <section class="footer-section">
+    <div class="footer-copy">
+      <p>© {{ currentYear }} Todos los derechos reservados</p>
+    </div>
+  </section>
+</footer>
