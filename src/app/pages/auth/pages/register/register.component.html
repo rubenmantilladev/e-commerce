@@ -1,0 +1,204 @@
+<section class="container-section register-section">
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    class="register-form"
+  >
+    <!-- Section Form 1  -->
+    <fieldset class="form__item">
+      <div class="form-group">
+        <legend>
+          <h2 class="heading2">Informacion General</h2>
+          <small class="info-subtitle"
+            >Por favor, ingresa tu informacion general</small
+          >
+        </legend>
+      </div>
+
+      <!-- Two Input group -->
+      <div class="form-group">
+        <div class="form-control__item">
+          <label for="name">Nombres</label>
+          <input type="text" name="name" id="name" formControlName="name" />
+        </div>
+        <div class="form-control__item">
+          <label for="lastname">Apellidos</label>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            formControlName="lastname"
+          />
+        </div>
+      </div>
+
+      <!-- Two Input group -->
+      <div class="form-group">
+        <div class="form-control__item">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" formControlName="email" />
+        </div>
+        <div class="form-control__item">
+          <label for="phone">Teléfono</label>
+          <input type="text" name="phone" id="phone" />
+        </div>
+      </div>
+
+      <!-- Two Input group -->
+      <div class="form-group">
+        <div class="form-control__item">
+          <label for="password">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            formControlName="password"
+          />
+        </div>
+        <div class="form-control__item">
+          <label for="confirm-password">confirmar contraseña</label>
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+            formControlName="passwordConfirm"
+          />
+        </div>
+      </div>
+
+      <!-- Two Input group -->
+      <div class="form-group">
+        <div class="form-control__item">
+          <label for="address">Dirección</label>
+          <input type="text" name="address" id="address" />
+        </div>
+        <div class="form-control__item">
+          <label for="city">Ciudad</label>
+          <input type="text" name="city" id="city" />
+        </div>
+      </div>
+
+      <!-- Two Input group -->
+      <div class="form-group">
+        <div class="form-control__item">
+          <label for="country">País</label>
+          <input type="text" name="country" id="country" />
+        </div>
+        <div class="form-control__item">
+          <label for="zip">ZIP / Código postal</label>
+          <input type="text" name="zip" id="zip" />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Section Form 2  -->
+    <fieldset class="form__item">
+      <div class="form-group">
+        <legend>
+          <h2 class="heading2">Métodos de pago</h2>
+          <small class="info-subtitle"
+            >Por favor, ingresa un método de pago</small
+          >
+        </legend>
+      </div>
+
+      <div class="form__item__large">
+        <div class="form_group__large payment-header">
+          <h5 class="heading4">Tarjeta de Crédito</h5>
+          <div class="images-cards">
+            <span>
+              <img src="assets/images/payments/visa.svg" alt="visa icon" />
+            </span>
+            <span>
+              <img
+                src="assets/images/payments/master-card.svg"
+                alt="visa icon"
+              />
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group__large">
+          <div class="form-control__large">
+            <label for="cardnumber">Número de tarjeta de crédito</label>
+            <input type="text" name="cardnumber" id="cardnumber" />
+          </div>
+          <div class="form-control__large form-control__large__multi">
+            <div class="form-control__large__multi__item">
+              <label for="card-holder">Titular de la tarjeta</label>
+              <input type="text" name="card-holder" id="card-holder" />
+            </div>
+
+            <div class="form-control__large__multi__item form-control-rigth">
+              <div class="form-control__large__multi__item__item">
+                <label for="expiration-date">Caducidad</label>
+                <input
+                  type="date"
+                  name="expiration-date"
+                  id="expiration-date"
+                  placeholder="DD//MM//YYYY"
+                />
+              </div>
+
+              <div class="form-control__large__multi__item__item">
+                <label for="cvc">CVC</label>
+                <input type="text" name="cvc" id="cvc" placeholder="CVC" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="form__item">
+      <div class="form-group">
+        <legend>
+          <h2 class="heading2">Información Adicional</h2>
+          <small class="info-subtitle"
+            >¿Necesitas algo más? ¡Lo haremos por ti!</small
+          >
+        </legend>
+      </div>
+
+      <div class="form-group">
+        <div class="form-control__textarea__item">
+          <label for="description">Descripción</label>
+          <textarea name="description" id="description" rows="10"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="form__item">
+      <div class="form-group">
+        <legend>
+          <h2 class="heading2">Confirmación</h2>
+          <small class="info-subtitle"
+            >Estamos llegando al final. ¡Solo unos pocos clics!</small
+          >
+        </legend>
+      </div>
+
+      <div class="form-group__checkbox">
+        <div class="form-control__item__checkbox">
+          <input type="checkbox" name="newsletter" id="newsletter" />
+          <label for="newsletter"
+            >Acepto el envío de correos electrónicos de marketing y boletines
+            informativos.</label
+          >
+        </div>
+        <div class="form-control__item__checkbox">
+          <input type="checkbox" name="newsletter" id="terms" />
+          <label for="terms"
+            >Estoy de acuerdo con nuestros términos y condiciones y política de
+            privacidad.</label
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Registrarme</button>
+      </div>
+    </fieldset>
+  </form>
+  <aside class="register-aside"></aside>
+</section>

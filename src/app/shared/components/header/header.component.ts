@@ -26,17 +26,17 @@ export class HeaderComponent {
   userMenu = [
     {
       name: 'Iniciar Sesión',
-      link: '/login',
+      link: '/auth/login',
       icon: 'assets/images/icons/icon-login.svg',
     },
     {
       name: 'Registrarme',
-      link: '/register',
+      link: '/auth/register',
       icon: 'assets/images/icons/icon-user.svg',
     },
     {
       name: 'Mi Perfil',
-      link: '/profile',
+      link: '/auth/profile',
       icon: 'assets/images/icons/icon-profile.svg',
     },
   ];
@@ -46,6 +46,11 @@ export class HeaderComponent {
       name: 'Mi carrito',
       link: '/cart',
       icon: 'assets/images/icons/icon-in-cart.svg',
+    },
+    {
+      name: 'Lista de deseos',
+      link: '/wishlist',
+      icon: 'assets/images/icons/icon-wishlist.svg',
     },
   ];
 }

@@ -1,0 +1,42 @@
+.register-section {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 45px;
+}
+
+.register-form {
+  flex: 1;
+  max-width: 670px;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.register-aside {
+  max-width: 29.25rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  align-self: flex-end;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-control__item {
+  max-width: 320px;
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+}
+
+.btn-primary {
+  color: var(--c-1-g);
+  padding: 1rem 3rem;
+  height: 4rem;
+}

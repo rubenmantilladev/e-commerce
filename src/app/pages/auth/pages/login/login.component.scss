@@ -1,0 +1,24 @@
+.login-section {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 45px;
+}
+
+.form__item {
+  max-width: 670px;
+}
+
+.login-aside {
+  max-width: 29.25rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  align-self: flex-end;
+}
+
+.btn-primary {
+  color: var(--c-1-g);
+  padding: 1rem 3rem;
+  height: 4rem;
+  float: right;
+}
