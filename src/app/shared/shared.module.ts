@@ -1,21 +1,29 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { DividerComponent } from './components/divider/divider.component';
-import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { SearchedTagComponent } from './components/searched-tag/searched-tag.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent,
-    MenuComponent,
     DividerComponent,
+    FooterComponent,
+    HeaderComponent,
+    MenuComponent,
     SearchBoxComponent,
+    SearchedTagComponent,
   ],
   imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, FooterComponent, MenuComponent, DividerComponent],
+  exports: [
+    DividerComponent,
+    FooterComponent,
+    HeaderComponent,
+    MenuComponent,
+    SearchedTagComponent,
+  ],
 })
 export class SharedModule {}

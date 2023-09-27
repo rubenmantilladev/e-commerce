@@ -4,8 +4,25 @@ import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss'],
+  template: `
+    <div class="flex-container">
+      <product-card
+        *ngFor="let product of productList"
+        [product]="product"
+      ></product-card>
+    </div>
+  `,
+  styles: [
+    `
+      .flex-container {
+        display: grid;
+        grid-template-columns: repeat(3, 269px);
+        grid-auto-rows: minmax(269px, auto);
+        gap: 1.5rem;
+        justify-content: center;
+      }
+    `,
+  ],
 })
 export class ProductListComponent implements OnInit {
   @Input() page!: number;

@@ -1,0 +1,25 @@
+.product-list,
+.category-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 1.5rem;
+}
+
+.image-container {
+  width: 100%;
+  height: 60vh;
+  max-height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

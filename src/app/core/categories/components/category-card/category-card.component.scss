@@ -1,0 +1,33 @@
+.card-container {
+  width: 269px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--c-1-e);
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 0.75rem;
+
+  .card-image-container {
+    width: 100%;
+    height: 180px;
+    background: var(--c-1-f);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-content-container {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-family: var(--f-f2);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--c-1-b);
+}
