@@ -1,0 +1,108 @@
+.card-container {
+  width: 269px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid var(--c-1-e);
+  padding: 1rem;
+  gap: 1rem;
+  position: relative;
+  border-radius: 12px;
+
+  .card-image-container {
+    width: 100%;
+    height: 180px;
+    background: var(--c-1-f);
+
+    .img-product {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .card-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-family: 'Poppins', sans-serif;
+
+    .title {
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: normal;
+      color: var(--c-1-a);
+      font-weight: bold;
+    }
+
+    .description {
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      color: var(--c-1-c);
+      text-wrap: balance;
+    }
+  }
+
+  .card-price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-weight: 500;
+    font-family: var(--f-f2);
+
+    .price-group {
+      display: flex;
+      flex-direction: column;
+
+      .price {
+        font-size: 1.125rem;
+        line-height: normal;
+        color: var(--c-1-a);
+        font-weight: 600;
+      }
+
+      .undiscounted-price {
+        font-size: 0.875rem;
+        color: var(--c-1-c);
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+
+.card-actions-container {
+  display: flex;
+  gap: 0.5rem;
+
+  .favorite-inline {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background: var(--c-2-a);
+    border: 2px solid var(--c-2-b);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background: var(--c-4-a);
+    }
+
+    &.active {
+      background: var(--c-4-a);
+      border-color: var(--c-4-a);
+    }
+  }
+}

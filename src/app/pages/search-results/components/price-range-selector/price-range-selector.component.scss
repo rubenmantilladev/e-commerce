@@ -1,0 +1,121 @@
+:root {
+  --progressW: 50%;
+}
+
+.container-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.price-range-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  input[type='number'] {
+    width: 109px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid var(--c-1-d, #d1d1d1);
+    background: var(--c-1-h, #f9f9f9);
+    padding: 0.75rem 1rem;
+    color: var(--c-1-c, #a9a9a9);
+    outline: none;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  span {
+    margin: 0 10px;
+    color: var(--c-1-c, #a9a9a9);
+  }
+
+  .sub-title {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--c-1-a);
+    line-height: 1.125rem;
+  }
+}
+
+.container-range {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .range__price-max,
+  .range__price-min {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px 0 0 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
+
+  .range__price-max {
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+  }
+
+  .range__price-min {
+    border-right: none;
+  }
+
+  .range__price-max::-webkit-slider-thumb,
+  .range__price-min::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f9f9f9;
+    border: 2px solid #a9a9a9;
+    cursor: pointer;
+  }
+
+  .range__price-max[type='range']:active::-webkit-slider-thumb,
+  .range__price-min[type='range']:active::-webkit-slider-thumb {
+    scale: 1.2;
+  }
+
+  .range__price-max[type='range'] {
+    background: linear-gradient(
+      to right,
+      var(--c-2-b) 0%,
+      var(--c-2-b) var(--progressW),
+      #ccc var(--progressW),
+      #ccc 100%
+    );
+  }
+  .range__price-min[type='range'] {
+    background: linear-gradient(
+      to right,
+      #ccc 0%,
+      #ccc var(--progressW),
+      var(--c-2-b) var(--progressW),
+      var(--c-2-b) 100%
+    );
+  }
+}
+
+.section-aside-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}

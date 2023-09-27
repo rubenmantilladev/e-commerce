@@ -12,16 +12,29 @@
 }
 
 .btn-primary {
+  display: flex;
   border-color: var(--c-2-b);
   background: var(--c-2-a);
-  color: var(--c-1-j);
+  color: var(--c-1-h);
 
   &:hover {
     background: var(--c-2-b);
   }
+
+  &:active {
+    background: var(--c-2-a);
+  }
+
+  &:disabled {
+    border: none;
+    background: var(--c-2-c);
+    color: var(--c-2-d);
+    cursor: not-allowed;
+  }
 }
 
 .btn-secondary {
+  display: flex;
   border-color: var(--c-1-a2);
   background: var(--c-1-j);
   color: var(--c-1-a2);
@@ -32,12 +45,12 @@
   }
   &:active {
     background: var(--c-1-a);
-    color: var(--c-1-j);
+    color: var(--c-1-h);
   }
   &:disabled {
     border: none;
     background: var(--c-1-b);
-    color: var(--c-1-a4);
+    color: var(--c-1-c);
     cursor: not-allowed;
   }
 }

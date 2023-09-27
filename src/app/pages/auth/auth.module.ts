@@ -8,6 +8,7 @@ import { AuthComponent } from './auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent, AuthComponent],
@@ -17,6 +18,6 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
 })
 export class AuthModule {}

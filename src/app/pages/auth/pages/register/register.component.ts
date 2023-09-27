@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/shared/validators/custom.validators';
 import { UserCreate } from '../../models/user.model';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +26,7 @@ export class RegisterComponent {
   );
 
   constructor(
-    private authSvc: AuthService,
+    private userSvc: UserService,
     private router: Router
   ) {}
 
@@ -48,7 +48,7 @@ export class RegisterComponent {
       avatar: user.avatar,
     };
 
-    this.authSvc.registerUser(newUser).subscribe({
+    this.userSvc.registerUser(newUser).subscribe({
       next: () => {
         console.log('User created successfully... in service');
         // TODO: Show notification success message to user
