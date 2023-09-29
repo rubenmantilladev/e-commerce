@@ -6,6 +6,7 @@ import { SearchResultsComponent } from './search-results.component';
 import { PriceRangeSelectorComponent } from './components/price-range-selector/price-range-selector.component';
 import { ProductsModule } from 'src/app/core/products/products.module';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [SearchResultsComponent, PriceRangeSelectorComponent],
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     SearchResultsRoutingModule,
     ProductsModule,
     FormsModule,
+    SharedModule,
   ],
 })
 export class SearchResultsModule {}

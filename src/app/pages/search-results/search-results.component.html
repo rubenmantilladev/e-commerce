@@ -1,7 +1,7 @@
 <section class="container-section view-search-section">
   <div class="container-view-search">
     <div class="title-view-search">
-      <h2>Title Search</h2>
+      <h2>{{ listWords[0] | titlecase }}</h2>
     </div>
     <div class="actions-views-search">
       <button class="grid-view view__item">
@@ -77,7 +77,10 @@
 <section class="container-section">
   <div class="tag-list">
     <span class="title-seached-tag">Historial de búsqueda: </span>
-    // TODO: Add Tags words
+    <shared-searched-tag
+      *ngFor="let word of listWords"
+      [word]="word"
+    ></shared-searched-tag>
   </div>
 </section>
 
@@ -120,7 +123,13 @@
   </aside>
 
   <!-- TODO: Add Cards Products -->
-  <product-list [page]="1" [limit]="15"></product-list>
+  <product-list
+    [title]="listWords[0]"
+    [page]="1"
+    [limit]="15"
+    [price_min]="price_min"
+    [price_max]="price_max"
+  ></product-list>
 </section>
 
 <section class="container-section paginator-container">

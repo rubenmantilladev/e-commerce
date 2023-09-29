@@ -19,8 +19,38 @@
     <category-list></category-list>
   </div>
 </section>
-<section class="category-section-list">
-  <!-- TODO: Add category section component -->
+<!-- TODO: Add category section component -->
+<section class="container-section category-p">
+  <div class="section-title separation-whitout-padding">
+    <h3>Categoría 1</h3>
+    <p>
+      <a href="#">Ver más</a>
+    </p>
+  </div>
+  <shared-divider></shared-divider>
+  <div class="container-list category-list">
+    <products-by-category
+      [categoryId]="1"
+      [limit]="4"
+      [page]="2"
+    ></products-by-category>
+  </div>
+</section>
+<section class="container-section category-p">
+  <div class="section-title separation-whitout-padding">
+    <h3>Categoría 2</h3>
+    <p>
+      <a href="#">Ver más</a>
+    </p>
+  </div>
+  <shared-divider></shared-divider>
+  <div class="container-list category-list">
+    <products-by-category
+      [categoryId]="2"
+      [limit]="4"
+      [page]="1"
+    ></products-by-category>
+  </div>
 </section>
 <section class="container-section separation-section">
   <div class="section-title separation-whitout-padding">

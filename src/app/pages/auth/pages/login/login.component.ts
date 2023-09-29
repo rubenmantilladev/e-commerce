@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Login } from '../../models/auth.model';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { NotifyService } from 'src/app/shared/services/notify.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent {
 
   constructor(
     private authSvc: AuthService,
-    private router: Router
+    private router: Router,
+    private notifySvc: NotifyService
   ) {}
 
   get f() {
@@ -44,11 +46,12 @@ export class LoginComponent {
       },
       error: (err) => {
         // TODO: Show notification error message to user
+        this.notifySvc.error('Fallo al iniciar sesión', 'Intente de nuevo');
         console.log(err.message);
       },
       complete: () => {
         // TODO: Show notification success message to user
-        console.log('Login successfully... complete service');
+        this.notifySvc.success('Inicio de sesión exitoso', 'Bienvenido');
         this.router.navigate(['/']);
       },
     });

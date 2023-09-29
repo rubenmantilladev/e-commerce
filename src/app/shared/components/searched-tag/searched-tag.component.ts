@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
+import { SearchHistoryService } from '../../services/search-history.service';
 
 @Component({
   selector: 'shared-searched-tag',
   template: `
     <div class="tag-container">
       <div class="tag">
-        <span class="tag-text"> {{ word }} </span>
+        <span class="tag-text"> {{ word | titlecase }} </span>
       </div>
-      <button class="tag-delete">
+      <button class="tag-delete" (click)="deleteWord(word)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="8"
@@ -61,6 +62,11 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchedTagComponent {
   @Input() tags: string[] = [];
-
   @Input() word = '';
+
+  constructor(private searchHistorySvc: SearchHistoryService) {}
+
+  deleteWord(word: string): void {
+    this.searchHistorySvc.deleteWord(word);
+  }
 }

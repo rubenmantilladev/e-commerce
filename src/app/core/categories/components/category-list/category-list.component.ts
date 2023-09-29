@@ -30,7 +30,6 @@ export class CategoryListComponent implements OnInit {
   constructor(private categorySvc: CategoryService) {}
 
   ngOnInit(): void {
-    console.log('In Category List');
     this.getAllCategories();
   }
 
@@ -40,7 +39,6 @@ export class CategoryListComponent implements OnInit {
         this.categoryList = categories;
       },
       error: (err) => console.log(err),
-      complete: () => console.log('Completed'),
     });
   }
 }

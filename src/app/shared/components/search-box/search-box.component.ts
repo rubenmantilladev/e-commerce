@@ -1,4 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { SearchHistoryService } from '../../services/search-history.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shared-search-box',
@@ -9,9 +11,17 @@ export class SearchBoxComponent {
   @ViewChild('txtTagInput')
   public tagInput!: ElementRef<HTMLInputElement>;
 
+  constructor(
+    private searchHistorySvc: SearchHistoryService,
+    private router: Router
+  ) {}
+
   searchTag() {
     const newTag = this.tagInput.nativeElement.value;
-
-    console.log(newTag);
+    this.searchHistorySvc.searchWord(newTag);
+    this.router.navigate(['/search'], {
+      queryParams: { q: newTag },
+    });
+    this.tagInput.nativeElement.value = '';
   }
 }

@@ -58,4 +58,19 @@ export class ProductService {
       `${this.API_URL}/products?offset=${offset}&limit=${limit}`
     );
   }
+
+  // category products
+  getAllProductsByCategory(id: number): Observable<ProductResponse[]> {
+    return this.http.get<ProductResponse[]>(
+      `${this.API_URL}/categories/${id}/products`
+    );
+  }
+
+  // category products with pagination
+  getProductsByCategoryPage(categoryId: number, page = 1, limit = 12) {
+    const offset = (page - 1) * limit;
+    return this.http.get<ProductResponse[]>(
+      `${this.API_URL}/categories/${categoryId}/products?offset=${offset}&limit=${limit}`
+    );
+  }
 }

@@ -6,7 +6,7 @@
       [(ngModel)]="price_min"
       (ngModelChange)="updateRange()"
       [min]="0"
-      [max]="1499"
+      [max]="499"
       step="1"
       (input)="changeVar1(+rangeField1.value)"
       #rangeField1
@@ -16,8 +16,8 @@
       class="range__price-max input-range"
       [(ngModel)]="price_max"
       (ngModelChange)="updateRange()"
-      [min]="1500"
-      [max]="3000"
+      [min]="500"
+      [max]="1000"
       (input)="changeVar2(+rangeField2.value)"
       step="1"
       #rangeField2

@@ -4,6 +4,7 @@ import { CustomValidators } from 'src/app/shared/validators/custom.validators';
 import { UserCreate } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { NotifyService } from 'src/app/shared/services/notify.service';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,8 @@ export class RegisterComponent {
 
   constructor(
     private userSvc: UserService,
-    private router: Router
+    private router: Router,
+    private notifySvc: NotifyService
   ) {}
 
   get f() {
@@ -53,13 +55,11 @@ export class RegisterComponent {
         console.log('User created successfully... in service');
         // TODO: Show notification success message to user
       },
-      error: (err) => {
-        console.log(err.message);
+      error: () => {
+        this.notifySvc.error('Fallo al crear usuario', 'Intente de nuevo');
       },
       complete: () => {
-        console.log('User created successfully... complete service');
-        // TODO: Show notification success message to user
-        // TODO: Redirect to login page
+        this.notifySvc.success('Usuario creado', 'Registro exitoso');
         this.router.navigate(['/auth/login']);
       },
     });

@@ -7,7 +7,6 @@ import {
   CategoryCreateRequest,
   CategoryUpdateRequest,
 } from '../models/category.model';
-import { ProductResponse } from '../../products/models/product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -32,11 +31,5 @@ export class CategoryService {
 
   deleteCategory(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.API_URL}/categories/${id}`);
-  }
-
-  getAllProductsByCategory(id: number): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(
-      `${this.API_URL}/categories/${id}/products`
-    );
   }
 }

@@ -34,14 +34,14 @@ export class PriceRangeSelectorComponent implements AfterViewInit {
     this.changeVar2();
   }
 
-  changeVar1(value = 700) {
+  changeVar1(value = 250) {
     const min = parseFloat(this.input1.nativeElement.min);
     const max = parseFloat(this.input1.nativeElement.max);
     const range = max - min;
     const progressW = ((value - min) / range) * 100 + '%';
     this.input1.nativeElement.style.setProperty('--progressW', progressW);
   }
-  changeVar2(value = 2200) {
+  changeVar2(value = 750) {
     const min = parseFloat(this.input2.nativeElement.min);
     const max = parseFloat(this.input2.nativeElement.max);
     const range = max - min;

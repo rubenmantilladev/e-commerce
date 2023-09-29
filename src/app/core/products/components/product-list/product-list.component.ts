@@ -1,13 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { ProductResponse } from '../../models/product.model';
-import { ProductService } from '../../services/product.service';
+import { SearchApiService } from 'src/app/shared/services/search-api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'product-list',
   template: `
     <div class="flex-container">
       <product-card
-        *ngFor="let product of productList"
+        *ngFor="let product of productList | sortBy: sortBy"
         [product]="product"
       ></product-card>
     </div>
@@ -24,30 +32,79 @@ import { ProductService } from '../../services/product.service';
     `,
   ],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() title!: string;
+  @Input() price_min!: number;
+  @Input() price_max!: number;
+  @Input() categoryId!: number;
   @Input() page!: number;
   @Input() limit!: number;
+  @Input() sortBy!: keyof ProductResponse;
   productList!: ProductResponse[];
 
-  constructor(private productSvc: ProductService) {}
+  private subscription!: Subscription;
+  constructor(private searchApiSvc: SearchApiService) {}
 
   ngOnInit(): void {
-    console.log('OnInit');
-    this.getProducts(this.page, this.limit);
+    this.searchResultsApi(
+      this.title,
+      this.price_min,
+      this.price_max,
+      this.categoryId,
+      this.page,
+      this.limit
+    );
+    this.getProducts();
   }
 
-  getProducts(page = 1, limit = 4) {
-    this.productSvc.getPageProducts(page, limit).subscribe({
+  ngOnChanges(change: SimpleChanges) {
+    if (
+      change['title'] ||
+      change['price_min'] ||
+      change['price_max'] ||
+      change['categoryId'] ||
+      change['page'] ||
+      change['limit']
+    ) {
+      this.searchResultsApi(
+        this.title,
+        this.price_min,
+        this.price_max,
+        this.categoryId,
+        this.page,
+        this.limit
+      );
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.searchApiSvc.setProductList([]);
+    this.subscription.unsubscribe();
+  }
+
+  getProducts() {
+    this.subscription = this.searchApiSvc.getProductList$().subscribe({
       next: (res) => {
         this.productList = res;
-        console.log(res);
       },
-      error: (err) => console.log(err),
-      complete: () => console.log('complete'),
     });
   }
 
-  showSearchedResults(cases: string, word: string) {
-    console.log(cases, word);
+  searchResultsApi(
+    title: string,
+    price_min: number,
+    price_max: number,
+    categoryId: number,
+    page: number,
+    limit: number
+  ) {
+    this.searchApiSvc
+      .searchProductsApi(title, price_min, price_max, categoryId, page, limit)
+      .subscribe({
+        next: (res) => {
+          this.searchApiSvc.setProductList(res);
+        },
+        error: (err) => console.log(err),
+      });
   }
 }
