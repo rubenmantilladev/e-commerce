@@ -95,8 +95,6 @@
         <p>Categorías</p>
       </div>
       <div class="category-list">
-        <!-- TODO: Add ngFor categories with length -->
-
         <div
           class="category-list__item"
           *ngFor="let category of categoryList | slice: 0 : 5"
@@ -119,7 +117,6 @@
     </div>
   </aside>
 
-  <!-- TODO: Add Cards Products -->
   <product-list
     [title]="listWords[0]"
     [page]="page"
@@ -158,7 +155,13 @@
 
   <div class="pages-container">
     <div class="page-list">
-      <button class="page-list__item" (click)="nextPage()">Siguiente</button>
+      <button
+        class="page-list__item"
+        (click)="nextPage()"
+        [disabled]="this.page > this.productsLength / 15"
+      >
+        Siguiente
+      </button>
     </div>
   </div>
 </section>

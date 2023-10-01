@@ -15,12 +15,17 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'product-list',
   template: `
-    <div class="flex-container">
+    <div class="flex-container" *ngIf="productList.length > 0; else notResults">
       <product-card
         *ngFor="let product of productList | sortBy: sortBy"
         [product]="product"
       ></product-card>
     </div>
+    <ng-template #notResults>
+      <div class="not-results">
+        <p>No se encontraron resultados para tu búsqueda</p>
+      </div>
+    </ng-template>
   `,
   styles: [
     `
@@ -30,6 +35,16 @@ import { Subscription } from 'rxjs';
         grid-auto-rows: minmax(269px, auto);
         gap: 1.5rem;
         justify-content: center;
+      }
+
+      .not-results {
+        width: 100%;
+        text-align: center;
+        padding: 2rem;
+        font-family: Poppins, sans-serif;
+        font-size: 2.5rem;
+        color: var(--c-1-a);
+        font-weight: 600;
       }
     `,
   ],
