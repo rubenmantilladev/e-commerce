@@ -155,13 +155,11 @@ aside {
 .paginator-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-family: 'Open Sans', sans-serif;
   padding: 1rem 45px;
 }
 
 .pages-container {
-  display: flex;
   gap: 0.5rem;
   font-size: 0.75rem;
   line-height: 1rem;
@@ -179,10 +177,11 @@ aside {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: var(--c-2-e);
+      background: none;
       color: var(--c-1-a);
       cursor: pointer;
       border: none;
+      font-size: 1rem;
 
       &.active {
         background: var(--c-2-a);
@@ -193,7 +192,7 @@ aside {
 
         &:hover {
           background: var(--c-2-a);
-          border-color: var(--c-1-a4);
+          border-color: var(--c-2-c);
           color: #fff;
         }
       }
@@ -201,6 +200,18 @@ aside {
       &:hover {
         color: var(--c-2-a);
       }
+
+      &:disabled {
+        color: var(--c-1-c);
+        cursor: not-allowed;
+      }
     }
   }
+}
+
+.show-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }

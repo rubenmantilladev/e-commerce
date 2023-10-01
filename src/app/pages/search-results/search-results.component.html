@@ -1,7 +1,7 @@
 <section class="container-section view-search-section">
   <div class="container-view-search">
     <div class="title-view-search">
-      <h2>{{ listWords[0] | titlecase }}</h2>
+      <h2>Resultados de: {{ listWords[0] | titlecase }}</h2>
     </div>
     <div class="actions-views-search">
       <button class="grid-view view__item">
@@ -69,7 +69,10 @@
         <p>Lista</p>
       </button>
       <div class="producto-length">
-        <p><span class="tag-number-products">###</span> Productos</p>
+        <p>
+          <span class="tag-number-products">{{ productsLength }}</span>
+          Productos
+        </p>
       </div>
     </div>
   </div>
@@ -80,6 +83,7 @@
     <shared-searched-tag
       *ngFor="let word of listWords"
       [word]="word"
+      (click)="searchWord(word)"
     ></shared-searched-tag>
   </div>
 </section>
@@ -91,21 +95,14 @@
         <p>Categorías</p>
       </div>
       <div class="category-list">
-        <div class="category-list__item">
-          <p class="category-list__item-name">Categoría 1</p>
-          <p class="category-list__item-number">320</p>
-        </div>
-        <div class="category-list__item">
-          <p class="category-list__item-name">Categoría 1</p>
-          <p class="category-list__item-number">320</p>
-        </div>
-        <div class="category-list__item">
-          <p class="category-list__item-name">Categoría 1</p>
-          <p class="category-list__item-number">320</p>
-        </div>
-        <div class="category-list__item">
-          <p class="category-list__item-name">Categoría 1</p>
-          <p class="category-list__item-number">320</p>
+        <!-- TODO: Add ngFor categories with length -->
+
+        <div
+          class="category-list__item"
+          *ngFor="let category of categoryList | slice: 0 : 5"
+        >
+          <p class="category-list__item-name">{{ category.name }}</p>
+          <p class="category-list__item-number">{{ category.length || 0 }}</p>
         </div>
       </div>
     </div>
@@ -125,31 +122,43 @@
   <!-- TODO: Add Cards Products -->
   <product-list
     [title]="listWords[0]"
-    [page]="1"
-    [limit]="15"
+    [page]="page"
+    [limit]="limit"
     [price_min]="price_min"
     [price_max]="price_max"
+    (productsCount)="productsCount($event)"
   ></product-list>
 </section>
 
 <section class="container-section paginator-container">
+  <div class="producto-length">
+    <p>
+      <span class="tag-number-products"> {{ productsLength }} </span> Productos
+    </p>
+  </div>
+
   <div class="pages-container">
-    <div class="page-title">
-      <p>Page:</p>
-    </div>
     <div class="page-list">
-      <button class="page-list__item active">1</button>
-      <button class="page-list__item">2</button>
-      <button class="page-list__item">3</button>
-      <button class="page-list__item">4</button>
+      <button
+        class="page-list__item"
+        (click)="prevPage()"
+        [disabled]="page === 1"
+      >
+        Anterior
+      </button>
     </div>
   </div>
 
   <div class="show-more">
-    <button class="btn btn-primary">Mostrar más productos</button>
+    <p class="page-list__item">Página {{ page }}</p>
+    <button class="btn btn-primary" (click)="moreProducts()">
+      Mostrar más productos
+    </button>
   </div>
 
-  <div class="producto-length">
-    <p><span class="tag-number-products">###</span> Productos</p>
+  <div class="pages-container">
+    <div class="page-list">
+      <button class="page-list__item" (click)="nextPage()">Siguiente</button>
+    </div>
   </div>
 </section>

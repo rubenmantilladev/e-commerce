@@ -2,6 +2,7 @@ export interface Category {
   id: number;
   name: string;
   image: string;
+  length?: number;
 }
 
 export interface CategoryComplete extends Category {

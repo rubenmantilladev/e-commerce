@@ -42,3 +42,10 @@ export interface ProductUpdateRequest {
   title: string;
   price: number;
 }
+
+// Product in cart
+
+export interface ProductInCart extends ProductResponse {
+  quantity: number;
+  inCart?: boolean;
+}

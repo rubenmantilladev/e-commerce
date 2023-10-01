@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Menu } from '../../models/cartMenu.model';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'shared-menu',
@@ -7,5 +10,18 @@ import { Component, Input } from '@angular/core';
 })
 export class MenuComponent {
   @Input()
-  itemsMenu: any[] = [];
+  itemsMenu!: Menu[];
+
+  constructor(
+    private shoppingCartSvc: ShoppingCartService,
+    private wishlistSvc: WishlistService
+  ) {}
+
+  openCart() {
+    this.shoppingCartSvc.setShowCart(true);
+  }
+
+  openWishlist() {
+    this.wishlistSvc.setShowWishlist(true);
+  }
 }

@@ -1,26 +1,28 @@
 <article class="card-container">
   <div class="card-image-container">
-    <img class="img-product" [src]="product.images[0]" alt="" />
+    <img class="img-product" [src]="productWithCart.images[0]" alt="" />
   </div>
   <div class="card-content-container">
-    <h2 class="title">{{ product.title }}</h2>
-    <p class="description">{{ product.description | slice: 0 : 50 }}...</p>
+    <h2 class="title">{{ productWithCart.title }}</h2>
+    <p class="description">
+      {{ productWithCart.description | slice: 0 : 50 }}...
+    </p>
   </div>
   <div class="card-price-container">
     <div class="price-group">
-      <p class="price">{{ product.price | currency }}</p>
+      <p class="price">{{ productWithCart.price | currency }}</p>
       <p class="undiscounted-price">15.48</p>
     </div>
     <div class="card-actions-container">
-      <div class="favorite-inline" [ngClass]="{ active: inCart }">
-        <img
-          (click)="addCart()"
-          (keypress.enter)="addCart()"
-          aria-hidden="true"
-          [src]="addCartIcon"
-          alt="icon add cart"
-        />
-      </div>
+      <button
+        class="favorite-inline"
+        [ngClass]="{ active: productWithCart.inCart }"
+        (click)="addCart()"
+        (keypress.enter)="addCart()"
+        aria-hidden="true"
+      >
+        <img [src]="addCartIcon" alt="icon add cart" />
+      </button>
       <button class="btn btn-primary">Comprar</button>
     </div>
   </div>

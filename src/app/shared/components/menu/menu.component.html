@@ -1,10 +1,12 @@
 <div class="menu">
   <ng-container *ngFor="let item of itemsMenu">
     <div
-      [routerLink]="[item?.link]"
-      routerLinkActive="router-link-active"
-      [routerLinkActiveOptions]="{ exact: true }"
       class="menu__item"
+      [routerLink]="item.link ? item.link : null"
+      routerLinkActive="router-link-active"
+      (click)="item.name === 'Mi carrito' ? openCart() : null"
+      (keyup.enter)="item.name === 'Mi carrito' ? openWishlist() : null"
+      aria-hidden="true"
     >
       <img width="20" height="20" [src]="item.icon" alt="" />
       <p>{{ item.name }}</p>

@@ -37,11 +37,11 @@
   display: flex;
   border-color: var(--c-1-a2);
   background: var(--c-1-j);
-  color: var(--c-1-a2);
+  color: var(--c-2-a);
 
   &:hover {
     background: var(--c-1-a2);
-    color: var(--c-1-j);
+    color: var(--c-1-a);
   }
   &:active {
     background: var(--c-1-a);
@@ -53,4 +53,24 @@
     color: var(--c-1-c);
     cursor: not-allowed;
   }
+}
+
+.btn-close {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  /* button styles */
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  color: var(--c-1-c);
+}
+
+.btn-cart {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--f-f1);
+  color: var(--c-1-c);
 }

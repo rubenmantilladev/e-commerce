@@ -1,9 +1,11 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { ProductResponse } from '../../models/product.model';
@@ -41,11 +43,32 @@ export class ProductListComponent implements OnInit, OnDestroy, OnChanges {
   @Input() limit!: number;
   @Input() sortBy!: keyof ProductResponse;
   productList!: ProductResponse[];
+  @Output() productsCount = new EventEmitter<number>();
 
   private subscription!: Subscription;
   constructor(private searchApiSvc: SearchApiService) {}
 
   ngOnInit(): void {
+    // Products count
+    this.searchApiSvc
+      .searchProductsApi(
+        this.title,
+        this.price_min,
+        this.price_max,
+        this.categoryId,
+        0,
+        0
+      )
+      .subscribe({
+        next: (res) => {
+          const productsCount = res.length;
+          if (productsCount === 0) {
+            return;
+          }
+          this.productsCount.emit(productsCount);
+        },
+        error: (err) => console.log(err),
+      });
     this.searchResultsApi(
       this.title,
       this.price_min,
@@ -54,7 +77,7 @@ export class ProductListComponent implements OnInit, OnDestroy, OnChanges {
       this.page,
       this.limit
     );
-    this.getProducts();
+    /* this.getProducts(); */
   }
 
   ngOnChanges(change: SimpleChanges) {
@@ -74,6 +97,33 @@ export class ProductListComponent implements OnInit, OnDestroy, OnChanges {
         this.page,
         this.limit
       );
+    }
+
+    if (
+      change['title'] ||
+      change['price_min'] ||
+      change['price_max'] ||
+      change['categoryId']
+    ) {
+      this.searchApiSvc
+        .searchProductsApi(
+          this.title,
+          this.price_min,
+          this.price_max,
+          this.categoryId,
+          0,
+          0
+        )
+        .subscribe({
+          next: (res) => {
+            const productsCount = res.length;
+            if (productsCount === 0) {
+              return;
+            }
+            this.productsCount.emit(productsCount);
+          },
+          error: (err) => console.log(err),
+        });
     }
   }
 
@@ -102,6 +152,7 @@ export class ProductListComponent implements OnInit, OnDestroy, OnChanges {
       .searchProductsApi(title, price_min, price_max, categoryId, page, limit)
       .subscribe({
         next: (res) => {
+          this.productList = res;
           this.searchApiSvc.setProductList(res);
         },
         error: (err) => console.log(err),

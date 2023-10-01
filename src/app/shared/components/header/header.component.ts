@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Menu } from '../../models/cartMenu.model';
 
 @Component({
   selector: 'shared-header',
@@ -6,24 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  showMenu1 = false;
-  showMenu2 = false;
-
-  openMenu1() {
-    this.showMenu1 = !this.showMenu1;
-    if (this.showMenu2) {
-      this.showMenu2 = false;
-    }
-  }
-
-  openMenu2() {
-    this.showMenu2 = !this.showMenu2;
-    if (this.showMenu1) {
-      this.showMenu1 = false;
-    }
-  }
-
-  userMenu = [
+  userMenu: Menu[] = [
     {
       name: 'Iniciar Sesión',
       link: '/auth/login',
@@ -41,15 +25,13 @@ export class HeaderComponent {
     },
   ];
 
-  cartMenu = [
+  cartMenu: Menu[] = [
     {
       name: 'Mi carrito',
-      link: '/cart',
       icon: 'assets/images/icons/icon-in-cart.svg',
     },
     {
       name: 'Lista de deseos',
-      link: '/wishlist',
       icon: 'assets/images/icons/icon-wishlist.svg',
     },
   ];

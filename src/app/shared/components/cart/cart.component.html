@@ -1,0 +1,140 @@
+<div class="container" *ngIf="showCart">
+  <div class="cart-products">
+    <div class="cart-header">
+      <h2>Carrito de compras</h2>
+      <button class="btn-close" (click)="onCloseCart()">
+        Cerrar
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M14.3606 14.36L1.64062 1.63995"
+              stroke="#151515"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="bevel"
+            />
+            <path
+              d="M14.3606 1.63995L1.64062 14.36"
+              stroke="#151515"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="bevel"
+            /></svg
+        ></span>
+      </button>
+    </div>
+
+    <div class="cart-product-list">
+      <!-- TODO: Add cart product list component -->
+
+      <div class="cart-product-list__item" *ngFor="let product of productList">
+        <div class="cart-item__left">
+          <div class="cart-container-img">
+            <img [src]="product.images[0]" alt="" />
+          </div>
+
+          <div class="cart-actions-list">
+            <button class="btn-cart widhlist">
+              <span class="icon-cart">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="10"
+                  viewBox="0 0 12 10"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M6.15559 1.44502C6.63297 0.967627 7.28045 0.699432 7.95559 0.699432C8.63072 0.699432 9.2782 0.967627 9.75559 1.44502C10.233 1.92241 10.5012 2.56988 10.5012 3.24502C10.5012 3.92015 10.233 4.56763 9.75559 5.04502L9.10059 5.70001L5.50059 9.30001L1.90058 5.70001L1.24558 5.04502C0.768195 4.56763 0.5 3.92015 0.5 3.24502C0.5 2.56988 0.768195 1.92241 1.24558 1.44502C1.72297 0.967627 2.37045 0.699432 3.04558 0.699432C3.72072 0.699432 4.36819 0.967627 4.84558 1.44502L5.50059 2.10002L6.15559 1.44502Z"
+                    stroke="#151515"
+                    stroke-linecap="round"
+                    stroke-linejoin="bevel"
+                  />
+                </svg>
+              </span>
+              Deseados
+            </button>
+            <button class="btn-cart delete" (click)="removeProduct(product)">
+              <span class="icon-cart">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="9"
+                  height="8"
+                  viewBox="0 0 9 8"
+                  fill="none"
+                >
+                  <path
+                    d="M7.68031 7.17999L1.32031 0.819992"
+                    stroke="#151515"
+                    stroke-linecap="round"
+                    stroke-linejoin="bevel"
+                  />
+                  <path
+                    d="M7.68031 0.819992L1.32031 7.17999"
+                    stroke="#151515"
+                    stroke-linecap="round"
+                    stroke-linejoin="bevel"
+                  />
+                </svg>
+              </span>
+              Eliminar
+            </button>
+          </div>
+        </div>
+        <div class="cart-item__rigth">
+          <div class="cart-product-data">
+            <h5>{{ product.title }}</h5>
+            <p><span class="product-subtitle">Farm:</span> Tharamis Farm</p>
+            <p><span class="product-subtitle">Freshness:</span> 1 day old</p>
+            <div class="reputation">
+              <!-- TODO: Add stars to reputation -->
+              <div class="stars">
+                <span class="icon-star" *ngFor="let star of [1, 2, 3, 4, 5]">
+                  <img src="assets/images/star.svg" alt="star" />
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="cart-product-price">
+            <div class="group-price">
+              <p class="price">{{ product.price | currency }}</p>
+              <p class="discount">{{ product.price + 67 | currency }}</p>
+            </div>
+            <div class="group-quantity">
+              <button class="quantity" (click)="lessProduct(product)">-</button>
+              <input
+                class="quantity-number"
+                type="text"
+                [value]="product.quantity"
+              />
+              <button class="quantity" (click)="moreProduct(product)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finish cart product list -->
+    </div>
+  </div>
+
+  <div class="cart-total">
+    <div class="cart-total-price">
+      <h5>Total</h5>
+      <p>{{ totalPrice | currency }}</p>
+    </div>
+    <shared-divider></shared-divider>
+    <div class="cart-total-actions">
+      <button class="btn btn-secondary" (click)="onCloseCart()">
+        Seguir comprando
+      </button>
+      <button class="btn btn-primary">Ir a Pagar</button>
+    </div>
+  </div>
+</div>

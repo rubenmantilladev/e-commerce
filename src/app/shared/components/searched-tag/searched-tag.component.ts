@@ -51,6 +51,10 @@ import { SearchHistoryService } from '../../services/search-history.service';
         background: var(--c-2-e, #f4f8ec);
       }
 
+      .tag {
+        cursor: pointer;
+      }
+
       .tag-delete {
         border: none;
         outline: none;

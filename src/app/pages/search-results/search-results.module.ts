@@ -7,6 +7,8 @@ import { PriceRangeSelectorComponent } from './components/price-range-selector/p
 import { ProductsModule } from 'src/app/core/products/products.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CategoryService } from 'src/app/core/categories/services/category.service';
+import { ProductService } from 'src/app/core/products/services/product.service';
 
 @NgModule({
   declarations: [SearchResultsComponent, PriceRangeSelectorComponent],
@@ -17,5 +19,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     SharedModule,
   ],
+  providers: [CategoryService, ProductService],
 })
 export class SearchResultsModule {}

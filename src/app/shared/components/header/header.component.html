@@ -30,13 +30,13 @@
     </div>
     <div class="actions-container">
       <div class="user-container">
-        <button (click)="openMenu1()" class="btn-menu-header user-icon">
+        <button class="btn-menu-header user-icon">
           <img src="assets/images/icons/icon-user.svg" alt="User icon" />
         </button>
         <shared-menu class="shared-menu" [itemsMenu]="userMenu"></shared-menu>
       </div>
       <div class="cart-container">
-        <button (click)="openMenu2()" class="btn-menu-header cart-icon">
+        <button class="btn-menu-header cart-icon">
           <img src="assets/images/icons/icon-cart.svg" alt="Cart icon" />
         </button>
         <shared-menu class="shared-menu" [itemsMenu]="cartMenu"></shared-menu>
@@ -44,3 +44,4 @@
     </div>
   </section>
 </header>
+<shared-cart></shared-cart>

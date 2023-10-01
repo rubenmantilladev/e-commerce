@@ -44,7 +44,6 @@ export class SearchApiService {
       .pipe(
         tap((res) => {
           this.setProductList(res);
-          console.log(res);
         })
       );
   }

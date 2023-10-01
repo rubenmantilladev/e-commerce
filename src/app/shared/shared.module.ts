@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { SearchedTagComponent } from './components/searched-tag/searched-tag.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SearchedTagComponent } from './components/searched-tag/searched-tag.com
     MenuComponent,
     SearchBoxComponent,
     SearchedTagComponent,
+    CartComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -24,6 +26,7 @@ import { SearchedTagComponent } from './components/searched-tag/searched-tag.com
     HeaderComponent,
     MenuComponent,
     SearchedTagComponent,
+    CartComponent,
   ],
 })
 export class SharedModule {}
