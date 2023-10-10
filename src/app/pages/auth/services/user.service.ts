@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { UserCreate, UserResponse } from '../models/user.model';
+import { CheckEmail, UserCreate, UserResponse } from '../models/user.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,5 +20,10 @@ export class UserService {
     return this.http.post<UserResponse>(`${this.API_URL}/users/`, user, {
       headers: this.headersJson,
     });
+  }
+
+  // TODO: User this method to check if email is available
+  checkEmail(email: CheckEmail): Observable<boolean> {
+    return this.http.post<boolean>(`${this.API_URL}/users/is-available`, email);
   }
 }

@@ -9,9 +9,7 @@
 <section class="container-section separation-section">
   <div class="section-title">
     <h2>Categorías</h2>
-    <p>
-      <a href="#">Ver más</a>
-    </p>
+    <p></p>
   </div>
   <shared-divider></shared-divider>
   <div class="category-list separation-whitout-padding">
@@ -20,44 +18,29 @@
   </div>
 </section>
 <!-- TODO: Add category section component -->
-<section class="container-section category-p">
+<section
+  class="container-section category-p"
+  *ngFor="let category of categoryList | slice: 0 : 4"
+>
   <div class="section-title separation-whitout-padding">
-    <h3>Categoría 1</h3>
+    <h3>{{ category.name | titlecase }}</h3>
     <p>
-      <a href="#">Ver más</a>
+      <a
+        (click)="redirectToCategory(category.id)"
+        (keyup.enter)="redirectToCategory(category.id)"
+        aria-hidden="true"
+        >Ver más</a
+      >
     </p>
   </div>
   <shared-divider></shared-divider>
   <div class="container-list category-list">
     <products-by-category
-      [categoryId]="1"
-      [limit]="4"
-      [page]="2"
-    ></products-by-category>
-  </div>
-</section>
-<section class="container-section category-p">
-  <div class="section-title separation-whitout-padding">
-    <h3>Categoría 2</h3>
-    <p>
-      <a href="#">Ver más</a>
-    </p>
-  </div>
-  <shared-divider></shared-divider>
-  <div class="container-list category-list">
-    <products-by-category
-      [categoryId]="2"
+      [categoryId]="category.id"
       [limit]="4"
       [page]="1"
     ></products-by-category>
   </div>
 </section>
-<section class="container-section separation-section">
-  <div class="section-title separation-whitout-padding">
-    <h2>Productos más vendidos</h2>
-    <p>
-      <a [routerLink]="['/product']">Ver más</a>
-    </p>
-  </div>
-  <shared-divider></shared-divider>
-</section>
+
+<!-- TODO:  Add Best Products Section  -->

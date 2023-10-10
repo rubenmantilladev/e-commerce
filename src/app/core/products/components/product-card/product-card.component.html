@@ -1,6 +1,10 @@
 <article class="card-container">
   <div class="card-image-container">
-    <img class="img-product" [src]="productWithCart.images[0]" alt="" />
+    <img
+      class="img-product"
+      [src]="productWithCart | productImage"
+      [alt]="productWithCart.title"
+    />
   </div>
   <div class="card-content-container">
     <h2 class="title">{{ productWithCart.title }}</h2>

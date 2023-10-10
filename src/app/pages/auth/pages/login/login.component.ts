@@ -29,7 +29,7 @@ export class LoginComponent {
     return this.loginForm;
   }
 
-  onSubmit() {
+  onLogin() {
     if (this.f.invalid) {
       // TODO: Show notification error message to user
       console.log('Invalid form');
@@ -39,20 +39,14 @@ export class LoginComponent {
     const userLogin: Login = this.f.value;
 
     this.authSvc.login(userLogin as Login).subscribe({
-      next: (res) => {
-        // TODO: Show notification success message to user
-        localStorage.setItem('token', res.access_token);
-        localStorage.setItem('refreshToken', res.refresh_token);
+      next: () => {
+        this.notifySvc.success('Inicio de sesión exitoso', 'Bienvenido');
+        this.router.navigate(['/']);
       },
       error: (err) => {
         // TODO: Show notification error message to user
         this.notifySvc.error('Fallo al iniciar sesión', 'Intente de nuevo');
         console.log(err.message);
-      },
-      complete: () => {
-        // TODO: Show notification success message to user
-        this.notifySvc.success('Inicio de sesión exitoso', 'Bienvenido');
-        this.router.navigate(['/']);
       },
     });
   }

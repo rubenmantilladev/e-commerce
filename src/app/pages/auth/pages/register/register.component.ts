@@ -19,9 +19,6 @@ export class RegisterComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       passwordConfirm: new FormControl('', [Validators.required]),
-      avatar: new FormControl(
-        'https://api.lorem.space/image/face?w=640&h=480&r=867'
-      ),
     },
     { validators: [CustomValidators.passwordsMatching] }
   );
@@ -41,27 +38,49 @@ export class RegisterComponent {
       // TODO: Show notification error message to user
       return;
     }
-
     const user = this.registerForm.value;
+
+    /* if (this.checkEmail(user.email)) {
+      return;
+    } */
+
     const newUser: UserCreate = {
       name: `${user.name} ${user.lastname}`,
       email: user.email,
       password: user.password,
-      avatar: user.avatar,
+      avatar: this.createAvatar(),
     };
 
     this.userSvc.registerUser(newUser).subscribe({
       next: () => {
-        console.log('User created successfully... in service');
-        // TODO: Show notification success message to user
+        this.notifySvc.success('Usuario creado', 'Registro exitoso');
+        this.router.navigate(['/auth/login']);
       },
       error: () => {
         this.notifySvc.error('Fallo al crear usuario', 'Intente de nuevo');
       },
-      complete: () => {
-        this.notifySvc.success('Usuario creado', 'Registro exitoso');
-        this.router.navigate(['/auth/login']);
+    });
+  }
+
+  createAvatar(): string {
+    const randomNumber = Math.floor(Math.random() * 1000);
+    const avatar = `https://api.lorem.space/image/face?w=640&h=480&r=${randomNumber}`;
+    return avatar;
+  }
+
+  checkEmail(email: string): boolean {
+    const emailObj = {
+      email: email,
+    };
+    let response = false;
+    this.userSvc.checkEmail(emailObj).subscribe({
+      next: (res) => {
+        if (res) {
+          response = res;
+          this.notifySvc.error('Email no disponible', 'Intente con otro');
+        }
       },
     });
+    return response;
   }
 }

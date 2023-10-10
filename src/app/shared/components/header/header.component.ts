@@ -10,12 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  isAuthenticated!: boolean;
+
   constructor(
     private shoppingCartSvc: ShoppingCartService,
     private wishlistSvc: WishlistService,
     private authSvc: AuthService,
     private router: Router
-  ) {}
+  ) {
+    this.authSvc.getUserLoggedInStatus().subscribe((res) => {
+      this.isAuthenticated = res;
+    });
+  }
   openCart() {
     this.shoppingCartSvc.setShowCart(true);
   }

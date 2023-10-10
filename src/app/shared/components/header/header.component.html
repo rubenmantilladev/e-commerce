@@ -41,6 +41,7 @@
               [routerLink]="['/auth/login']"
               routerLinkActive="router-link-active"
               aria-hidden="true"
+              *ngIf="!isAuthenticated"
             >
               <img
                 width="20"
@@ -56,6 +57,7 @@
               [routerLink]="['/auth/register']"
               routerLinkActive="router-link-active"
               aria-hidden="true"
+              *ngIf="!isAuthenticated"
             >
               <img
                 width="20"
@@ -71,6 +73,7 @@
               [routerLink]="['/auth/profile']"
               routerLinkActive="router-link-active"
               aria-hidden="true"
+              *ngIf="isAuthenticated"
             >
               <img
                 width="20"
@@ -86,6 +89,7 @@
               (click)="onLogout()"
               (keyup.enter)="onLogout()"
               aria-hidden="true"
+              *ngIf="isAuthenticated"
             >
               <img
                 width="20"

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,12 +14,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule,
     SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-//=> In submodules only:
-// imports: [SweetAlert2Module],

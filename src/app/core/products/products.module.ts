@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { SearchApiService } from 'src/app/shared/services/search-api.service';
+import { ProductImagePipe } from './pipes/product-image.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SearchApiService } from 'src/app/shared/services/search-api.service';
     ProductListComponent,
     ProductsByCategoryComponent,
     SortByPipe,
+    ProductImagePipe,
   ],
   imports: [CommonModule, HttpClientModule],
   exports: [
