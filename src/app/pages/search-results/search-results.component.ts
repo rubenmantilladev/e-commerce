@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/core/categories/models/category.model';
 import { CategoryService } from 'src/app/core/categories/services/category.service';
+import { ProductResponse } from 'src/app/core/products/models/product.model';
 import { ProductService } from 'src/app/core/products/services/product.service';
 import { SearchHistoryService } from 'src/app/shared/services/search-history.service';
 
@@ -16,6 +17,9 @@ export class SearchResultsComponent implements OnInit {
   productsLength!: number;
   limit = 15;
   page = 1;
+  sortBy!: keyof ProductResponse;
+  order!: 'asc' | 'desc';
+  categoryId!: number;
 
   constructor(
     private searchHistorySvc: SearchHistoryService,

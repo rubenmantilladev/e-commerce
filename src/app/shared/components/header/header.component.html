@@ -33,13 +33,108 @@
         <button class="btn-menu-header user-icon">
           <img src="assets/images/icons/icon-user.svg" alt="User icon" />
         </button>
-        <shared-menu class="shared-menu" [itemsMenu]="userMenu"></shared-menu>
+
+        <div class="shared-menu">
+          <div class="menu">
+            <div
+              class="menu__item"
+              [routerLink]="['/auth/login']"
+              routerLinkActive="router-link-active"
+              aria-hidden="true"
+            >
+              <img
+                width="20"
+                height="20"
+                src="assets/images/icons/icon-login.svg"
+                alt="Iniciar sesión"
+              />
+              <p>Iniciar Sesión</p>
+            </div>
+            <shared-divider></shared-divider>
+            <div
+              class="menu__item"
+              [routerLink]="['/auth/register']"
+              routerLinkActive="router-link-active"
+              aria-hidden="true"
+            >
+              <img
+                width="20"
+                height="20"
+                src="assets/images/icons/icon-user.svg"
+                alt=""
+              />
+              <p>Registrarme</p>
+            </div>
+            <shared-divider></shared-divider>
+            <div
+              class="menu__item"
+              [routerLink]="['/auth/profile']"
+              routerLinkActive="router-link-active"
+              aria-hidden="true"
+            >
+              <img
+                width="20"
+                height="20"
+                src="assets/images/icons/icon-profile.svg"
+                alt=""
+              />
+              <p>Mi Perfil</p>
+            </div>
+            <shared-divider></shared-divider>
+            <div
+              class="menu__item"
+              (click)="onLogout()"
+              (keyup.enter)="onLogout()"
+              aria-hidden="true"
+            >
+              <img
+                width="20"
+                height="20"
+                src="assets/images/icons/icon-logout.svg"
+                alt=""
+              />
+              <p>Cerrar Sesión</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="cart-container">
         <button class="btn-menu-header cart-icon">
           <img src="assets/images/icons/icon-cart.svg" alt="Cart icon" />
         </button>
-        <shared-menu class="shared-menu" [itemsMenu]="cartMenu"></shared-menu>
+        <div class="shared-menu">
+          <div class="menu">
+            <div
+              class="menu__item"
+              (keyup.enter)="openCart()"
+              (click)="openCart()"
+              aria-hidden="true"
+            >
+              <img
+                width="20"
+                height="20"
+                src="assets/images/icons/icon-in-cart.svg"
+                alt=""
+              />
+              <p>Mi carrito</p>
+            </div>
+            <shared-divider></shared-divider>
+            <div
+              class="menu__item"
+              (keyup.enter)="openWishlist()"
+              (click)="openWishlist()"
+              aria-hidden="true"
+            >
+              <img
+                width="20"
+                height="20"
+                src="assets/images/icons/icon-wishlist.svg"
+                alt=""
+              />
+              <p>Lista de deseos</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

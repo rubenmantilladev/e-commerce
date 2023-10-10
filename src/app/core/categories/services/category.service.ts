@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import {
   Category,
@@ -16,8 +16,21 @@ export class CategoryService {
 
   constructor(private http: HttpClient) {}
 
+  // Category list for search
+  private categoryList$ = new BehaviorSubject<Category[]>([]);
+  getCategoryList$(): Observable<Category[]> {
+    return this.categoryList$.asObservable();
+  }
+  setCategoryList(categoryList: Category[]) {
+    this.categoryList$.next(categoryList);
+  }
+
   getAllCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.API_URL}/categories`);
+    return this.http.get<Category[]>(`${this.API_URL}/categories`).pipe(
+      tap((res) => {
+        this.setCategoryList(res);
+      })
+    );
   }
 
   createCategory(category: CategoryCreateRequest): Observable<Category> {

@@ -1,8 +1,12 @@
 <div class="input-container">
-  <select name="category" id="category">
-    <option value="all">Todas las categorías</option>
-    <option value="tag 2">Categoría 1</option>
-    <option value="tag 1">Categoría 2</option>
+  <select name="category" id="category" #txtCategorySelect>
+    <option value="">Todas las categorías</option>
+    <option
+      *ngFor="let category of categoryList | slice: 0 : 4"
+      [value]="category.id"
+    >
+      {{ category.name | titlecase }}
+    </option>
   </select>
   <input
     type="search"

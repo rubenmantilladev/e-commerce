@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Menu } from '../../models/cartMenu.model';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { WishlistService } from '../../services/wishlist.service';
+import { AuthService } from 'src/app/pages/auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shared-header',
@@ -7,32 +10,20 @@ import { Menu } from '../../models/cartMenu.model';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  userMenu: Menu[] = [
-    {
-      name: 'Iniciar Sesión',
-      link: '/auth/login',
-      icon: 'assets/images/icons/icon-login.svg',
-    },
-    {
-      name: 'Registrarme',
-      link: '/auth/register',
-      icon: 'assets/images/icons/icon-user.svg',
-    },
-    {
-      name: 'Mi Perfil',
-      link: '/auth/profile',
-      icon: 'assets/images/icons/icon-profile.svg',
-    },
-  ];
-
-  cartMenu: Menu[] = [
-    {
-      name: 'Mi carrito',
-      icon: 'assets/images/icons/icon-in-cart.svg',
-    },
-    {
-      name: 'Lista de deseos',
-      icon: 'assets/images/icons/icon-wishlist.svg',
-    },
-  ];
+  constructor(
+    private shoppingCartSvc: ShoppingCartService,
+    private wishlistSvc: WishlistService,
+    private authSvc: AuthService,
+    private router: Router
+  ) {}
+  openCart() {
+    this.shoppingCartSvc.setShowCart(true);
+  }
+  openWishlist() {
+    this.wishlistSvc.setShowWishlist(true);
+  }
+  onLogout() {
+    this.authSvc.logout();
+    this.router.navigate(['/auth/login']);
+  }
 }

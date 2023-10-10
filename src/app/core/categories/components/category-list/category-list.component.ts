@@ -35,8 +35,12 @@ export class CategoryListComponent implements OnInit {
 
   getAllCategories() {
     this.categorySvc.getAllCategories().subscribe({
-      next: (categories) => {
-        this.categoryList = categories;
+      next: () => {
+        this.categorySvc.getCategoryList$().subscribe({
+          next: (res) => {
+            this.categoryList = res;
+          },
+        });
       },
       error: (err) => console.log(err),
     });

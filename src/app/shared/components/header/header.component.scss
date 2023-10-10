@@ -98,3 +98,39 @@ shared-cart {
   right: 0;
   z-index: 1000;
 }
+
+/*
+MENU
+*/
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  background: var(--c-1-h);
+  border: 1px solid var(--c-1-e);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.875rem;
+  z-index: 999;
+
+  .menu__item {
+    padding: 1rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    p {
+      text-decoration: none;
+      color: var(--c-1-a);
+    }
+
+    &:hover {
+      background: var(--c-2-c);
+    }
+  }
+}
