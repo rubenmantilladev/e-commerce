@@ -1,0 +1,58 @@
+<section class="container-section details-container">
+  <aside class="section-images">
+    <produtc-details-carousel
+      [images]="product.images"
+    ></produtc-details-carousel>
+  </aside>
+  <article class="section-details">
+    <div class="section-details__item">
+      <div class="title-product">
+        <h1 class="heading1">{{ product.title }}</h1>
+        <div class="reputation-stars">
+          <div class="star-container" *ngFor="let start of [1, 2, 3, 4, 5]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="14"
+              viewBox="0 0 15 14"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#FDBC15"
+                d="M6.8341 1.1266C6.88015 0.980572 6.97155 0.853026 7.09503 0.762489C7.21851 0.671952 7.36764 0.623138 7.52076 0.623138C7.67388 0.623138 7.82301 0.671952 7.94649 0.762489C8.06997 0.853026 8.16138 0.980572 8.20743 1.1266L9.44743 4.93993H13.4474C13.606 4.93394 13.7622 4.98003 13.8921 5.07116C14.0221 5.16229 14.1186 5.29345 14.167 5.44461C14.2153 5.59577 14.2129 5.7586 14.16 5.90824C14.1071 6.05787 14.0067 6.18608 13.8741 6.27327L10.6274 8.6266L11.8674 12.4466C11.9165 12.5921 11.9177 12.7495 11.871 12.8957C11.8242 13.042 11.7319 13.1695 11.6076 13.2596C11.4832 13.3497 11.3333 13.3977 11.1798 13.3965C11.0263 13.3954 10.8771 13.3452 10.7541 13.2533L7.50076 10.8733L4.2541 13.2333C4.1311 13.3252 3.98194 13.3754 3.82839 13.3765C3.67484 13.3777 3.52495 13.3297 3.40061 13.2396C3.27627 13.1495 3.18398 13.022 3.13723 12.8757C3.09049 12.7295 3.09172 12.5721 3.14076 12.4266L4.38076 8.6066L1.1341 6.25327C1.00148 6.16608 0.901063 6.03787 0.848176 5.88824C0.795288 5.7386 0.792843 5.57577 0.841212 5.42461C0.889582 5.27345 0.986108 5.14229 1.11604 5.05116C1.24597 4.96003 1.40217 4.91394 1.56076 4.91993H5.56076L6.8341 1.1266Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <p>{{ product.description }}</p>
+
+      <div class="pricing-product">
+        <div class="price">
+          <p class="price heading2">{{ product.price | currency }}</p>
+          <small class="discount heading6">{{
+            product.price + 20 | currency
+          }}</small>
+        </div>
+        <div class="btn-actions">
+          <div class="group-quantity">
+            <button class="quantity" (click)="lessProduct(product)">-</button>
+            <input
+              class="quantity-number"
+              type="text"
+              [value]="product.quantity"
+            />
+            <button class="quantity" (click)="moreProduct(product)">+</button>
+          </div>
+          <button class="btn btn-primary" (click)="addToCart()">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="section-details__item"></div>
+  </article>
+</section>

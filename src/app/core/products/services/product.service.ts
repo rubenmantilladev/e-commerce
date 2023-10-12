@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import {
   ProductCreateRequest,
@@ -16,6 +16,14 @@ export class ProductService {
   private API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) {}
+
+  private showDetails = new BehaviorSubject<boolean>(false);
+  getShowDetails(): Observable<boolean> {
+    return this.showDetails.asObservable();
+  }
+  setShowDetails(value: boolean) {
+    this.showDetails.next(value);
+  }
 
   headersJson = new Headers({
     'Content-Type': 'application/json',

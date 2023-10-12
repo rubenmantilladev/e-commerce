@@ -7,7 +7,13 @@
     />
   </div>
   <div class="card-content-container">
-    <h2 class="title">{{ productWithCart.title }}</h2>
+    <a
+      (click)="showDetails()"
+      (keyup.enter)="showDetails()"
+      aria-hidden="true"
+      class="title"
+      >{{ productWithCart.title }}</a
+    >
     <p class="description">
       {{ productWithCart.description | slice: 0 : 50 }}...
     </p>
@@ -15,7 +21,9 @@
   <div class="card-price-container">
     <div class="price-group">
       <p class="price">{{ productWithCart.price | currency }}</p>
-      <p class="undiscounted-price">15.48</p>
+      <p class="undiscounted-price">
+        {{ productWithCart.price + 224 | currency }}
+      </p>
     </div>
     <div class="card-actions-container">
       <button

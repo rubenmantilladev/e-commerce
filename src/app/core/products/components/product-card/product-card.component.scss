@@ -37,6 +37,16 @@
       line-height: normal;
       color: var(--c-1-a);
       font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: var(--c-2-c);
+      }
     }
 
     .description {

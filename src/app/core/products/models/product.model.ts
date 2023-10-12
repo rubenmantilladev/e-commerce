@@ -48,4 +48,5 @@ export interface ProductUpdateRequest {
 export interface ProductInCart extends ProductResponse {
   quantity: number;
   inCart?: boolean;
+  showDetails?: boolean;
 }

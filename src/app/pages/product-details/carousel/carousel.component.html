@@ -1,0 +1,27 @@
+<div class="carousel">
+  <div class="carousel-inner">
+    <div
+      *ngFor="let image of images; let i = index"
+      class="carousel-item"
+      [ngClass]="{ active: i === currentIndex }"
+    >
+      <img [src]="image" alt="Image {{ i }}" />
+    </div>
+  </div>
+  <a
+    class="carousel-control-prev"
+    (click)="prevSlide()"
+    (keyup.enter)="prevSlide()"
+    aria-hidden="true"
+  >
+    &lt;
+  </a>
+  <a
+    class="carousel-control-next"
+    (click)="nextSlide()"
+    (keyup.enter)="nextSlide()"
+    aria-hidden="true"
+  >
+    &gt;
+  </a>
+</div>
