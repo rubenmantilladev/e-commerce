@@ -1,4 +1,7 @@
-<section class="container-section details-container">
+<section
+  class="container-section details-container"
+  *ngIf="product; else noProduct"
+>
   <aside class="section-images">
     <produtc-details-carousel
       [images]="product.images"
@@ -56,3 +59,8 @@
     <div class="section-details__item"></div>
   </article>
 </section>
+<ng-template #noProduct>
+  <div class="container-section">
+    <h1 class="heading1">No se encontró el producto</h1>
+  </div>
+</ng-template>

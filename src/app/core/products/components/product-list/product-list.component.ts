@@ -10,18 +10,21 @@ import {
 } from '@angular/core';
 import { ProductResponse } from '../../models/product.model';
 import { SearchApiService } from 'src/app/shared/services/search-api.service';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'product-list',
   template: `
-    <div class="flex-container" *ngIf="productList.length > 0; else notResults">
-      <product-card
-        *ngFor="let product of productList | sortBy: sortBy : order"
-        [product]="product"
-      ></product-card>
-    </div>
+    <ng-container *ngIf="productList">
+      <div
+        class="flex-container"
+        *ngIf="productList.length > 0; else notResults"
+      >
+        <product-card
+          *ngFor="let product of productList | sortBy: sortBy : order"
+          [product]="product"
+        ></product-card>
+      </div>
+    </ng-container>
     <ng-template #notResults>
       <div class="not-results">
         <p>No se encontraron resultados para tu búsqueda</p>
@@ -62,22 +65,9 @@ export class ProductListComponent implements OnInit, OnDestroy, OnChanges {
   productList!: ProductResponse[];
   @Output() productsCount = new EventEmitter<number>();
 
-  private subscription!: Subscription;
-
-  constructor(
-    private searchApiSvc: SearchApiService,
-    private router: Router
-  ) {}
+  constructor(private searchApiSvc: SearchApiService) {}
 
   ngOnInit(): void {
-    // get products by category id in query params
-    const categoryId = this.router.parseUrl(this.router.url).queryParams[
-      'categoryId'
-    ];
-    if (categoryId) {
-      this.categoryId = categoryId;
-    }
-
     // Products count
     this.searchApiSvc
       .searchProductsApi(
@@ -158,11 +148,10 @@ export class ProductListComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy(): void {
     this.searchApiSvc.setProductList([]);
-    this.subscription.unsubscribe();
   }
 
   getProducts() {
-    this.subscription = this.searchApiSvc.getProductList$().subscribe({
+    this.searchApiSvc.getProductList$().subscribe({
       next: (res) => {
         this.productList = res;
       },

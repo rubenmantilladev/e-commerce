@@ -8,8 +8,7 @@
   </div>
   <div class="card-content-container">
     <a
-      (click)="showDetails()"
-      (keyup.enter)="showDetails()"
+      [routerLink]="['/details/product', productWithCart.id]"
       aria-hidden="true"
       class="title"
       >{{ productWithCart.title }}</a

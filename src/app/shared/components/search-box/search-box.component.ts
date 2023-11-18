@@ -40,9 +40,10 @@ export class SearchBoxComponent implements OnInit {
     console.log(newCategory);
 
     this.searchHistorySvc.searchWord(newTag);
-    this.router.navigate(['/search'], {
-      queryParams: { categoryId: newCategory },
-    });
+    // si ya estoy en la page "search" no hago nada
+    if (!(this.router.url === '/search')) {
+      this.router.navigate(['/search']);
+    }
     this.tagInput.nativeElement.value = '';
   }
 }

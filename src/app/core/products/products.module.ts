@@ -8,6 +8,7 @@ import { ProductsByCategoryComponent } from './components/products-by-category/p
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { SearchApiService } from 'src/app/shared/services/search-api.service';
 import { ProductImagePipe } from './pipes/product-image.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ProductImagePipe } from './pipes/product-image.pipe';
     SortByPipe,
     ProductImagePipe,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     ProductCardComponent,
     ProductListComponent,
