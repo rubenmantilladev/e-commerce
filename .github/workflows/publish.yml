@@ -39,9 +39,9 @@ jobs:
             cd /root/rubenmantilladev/e-commerce
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.TOKEN_ECOMMERCE }}
             docker pull ghcr.io/rubenmantilladev/e-commerce:latest
-            docker stop tasklist && docker rm tasklist
+            docker stop ecommerce && docker rm ecommerce
             docker run -d \
-              --name tasklist \
+              --name ecommerce \
               -p 80:80 \
               -v /root/rubenmantilladev/e-commerce:/app \
               -w /app \
