@@ -10,8 +10,7 @@
     "prettier": "npx prettier --write .",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "prepare": "husky install"
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
