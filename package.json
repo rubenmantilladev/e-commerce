@@ -9,7 +9,9 @@
     "lint:fix": "ng lint --fix",
     "prettier": "npx prettier --write .",
     "start": "ng serve",
+    "start:prod": "ng serve --configuration production",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development"
   },
   "private": true,
