@@ -1,0 +1,50 @@
+name: publish
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  create-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and push
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.TOKEN_ECOMMERCE }}
+
+      - name: Build the Docker image
+        run: |
+          docker build . --tag ghcr.io/rubenmantilladev/e-commerce:latest
+          docker push ghcr.io/rubenmantilladev/e-commerce:latest
+
+  deploy:
+    needs: create-docker-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: SSH into Server
+        run: |
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -p${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no ${{ secrets.AUTH_SERVER }} << EOF
+            cd /root/rubenmantilladev/e-commerce
+            docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.TOKEN_ECOMMERCE }}
+            docker pull ghcr.io/rubenmantilladev/e-commerce:latest
+            docker stop tasklist && docker rm tasklist
+            docker run -d \
+              --name tasklist \
+              -p 80:80 \
+              -v /root/rubenmantilladev/e-commerce:/app \
+              -w /app \
+              --restart=always \
+              ghcr.io/rubenmantilladev/e-commerce:latest
+          EOF

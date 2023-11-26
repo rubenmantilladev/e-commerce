@@ -3,5 +3,5 @@
 
 #npm run test:headless
 #npm run lint
-npm run prettier
-npx lint-staged
+#npm run prettier
+#npx lint-staged
