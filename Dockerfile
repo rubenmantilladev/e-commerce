@@ -3,6 +3,7 @@ FROM node:18-alpine as builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+RUN npx ngcc es2023 browser modeule main --first-only --create-ivy-entry-points
 COPY . .
 RUN npm run build:prod
 
